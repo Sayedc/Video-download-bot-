@@ -1,52 +1,108 @@
 import os
 
-# ==========================
-# Telegram
-# ==========================
+# ===============================
+# BOT
+# ===============================
+
+BOT_NAME = "Alhawy Downloader"
+BOT_VERSION = "3.0.0"
+
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 
-# حط الآيدي بتاعك هنا
+# ===============================
+# ADMINS
+# ===============================
+
 ADMIN_IDS = [
-    5671168695
+    int(x)
+    for x in os.getenv("ADMIN_IDS", "").split(",")
+    if x.strip()
 ]
 
-# ==========================
-# Bot
-# ==========================
-BOT_NAME = "Alhawy Downloader"
+# ===============================
+# PATHS
+# ===============================
 
-SIGNATURE = "✨ 𝓐𝓵𝓱𝓪𝔀𝔂 ✨"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-VERSION = "3.0"
+DOWNLOADS_PATH = os.path.join(BASE_DIR, "downloads")
 
-# ==========================
-# Download
-# ==========================
-DOWNLOADS_PATH = "downloads"
+COOKIES_FILE = os.path.join(BASE_DIR, "cookies.txt")
 
-MAX_CONCURRENT_DOWNLOADS = 3
+LOGS_PATH = os.path.join(BASE_DIR, "logs")
 
-MAX_FILE_SIZE = 1024 * 1024 * 1024  # 1GB
+DATABASE_FILE = os.path.join(BASE_DIR, "database.json")
 
-# ==========================
-# Security
-# ==========================
-RATE_LIMIT = 10
-RATE_LIMIT_WINDOW = 60
+# ===============================
+# SIGNATURE
+# ===============================
 
-AUTO_DELETE_FILES = True
+SIGNATURE = "✨ Powered By Alhawy"
 
-# ==========================
-# Database
-# ==========================
-DATABASE_FILE = "database/database.json"
+# ===============================
+# DOWNLOAD
+# ===============================
 
-# ==========================
-# Cookies
-# ==========================
-COOKIES_FILE = "cookies.txt"
+MAX_CONCURRENT_DOWNLOADS = 5
 
-# ==========================
-# Logs
-# ==========================
-LOGS_FOLDER = "logs"
+MAX_FILE_SIZE = 2 * 1024 * 1024 * 1024
+
+DEFAULT_VIDEO_QUALITY = "720"
+
+ALLOW_AUDIO = True
+
+ALLOW_VIDEO = True
+
+DELETE_FILES_AFTER_SEND = True
+
+DOWNLOAD_TIMEOUT = 600
+
+# ===============================
+# SECURITY
+# ===============================
+
+MAX_REQUESTS_PER_MINUTE = 10
+
+AUTO_BLOCK = True
+
+BLOCK_AFTER_FAILED = 10
+
+# ===============================
+# CACHE
+# ===============================
+
+ENABLE_CACHE = True
+
+CACHE_TIME = 3600
+
+# ===============================
+# DEBUG
+# ===============================
+
+DEBUG = False
+
+# ===============================
+# STICKERS
+# ===============================
+
+SUCCESS_STICKERS = [
+    "🎉",
+    "🔥",
+    "🚀",
+    "⚡",
+    "✅"
+]
+
+ERROR_STICKERS = [
+    "❌",
+    "⚠️",
+    "💥",
+    "🚫"
+]
+
+PROCESSING_STICKERS = [
+    "⏳",
+    "📥",
+    "⚙️",
+    "🚀"
+]
